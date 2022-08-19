@@ -7,6 +7,7 @@ import 'package:fresh_vegetable/pages/review_cart.dart';
 import 'package:fresh_vegetable/pages/search_page.dart';
 import 'package:fresh_vegetable/providers/product_provider.dart';
 import 'package:fresh_vegetable/widget/drawer.dart';
+import 'package:fresh_vegetable/widget/product_shimmer.dart';
 import 'package:fresh_vegetable/widget/single_product.dart';
 import 'package:provider/provider.dart';
 
@@ -57,36 +58,39 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(
             height: 240,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: prodcutProvider.getHerbProductDataList
-                  .map(
-                    (herbProductData) => Card(
-                      child: SingalProduct(
-                        herbProductData.productImage,
-                        herbProductData.productName,
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductOverview(
-                                  herbProductData.productName,
-                                  herbProductData.productImage,
-                                  herbProductData.productPrice,
-                                  herbProductData.productId,
-                                  herbProductData.productQty,
-                                  herbProductData.productUnit),
+            child: prodcutProvider.getHerbProductDataList.isEmpty
+                ? ProductShimmer()
+                : ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children: prodcutProvider.getHerbProductDataList
+                        .map(
+                          (herbProductData) => Card(
+                            child: SingalProduct(
+                              herbProductData.productImage,
+                              herbProductData.productName,
+                              () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductOverview(
+                                        herbProductData.productName,
+                                        herbProductData.productImage,
+                                        herbProductData.productPrice,
+                                        herbProductData.productId,
+                                        herbProductData.productQty,
+                                        herbProductData.productUnit),
+                                  ),
+                                );
+                              },
+                              herbProductData.productPrice,
+                              herbProductData.productId,
+                              herbProductData,
                             ),
-                          );
-                        },
-                        herbProductData.productPrice,
-                        herbProductData.productId,
-                        herbProductData,
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
           ),
         ],
       );
@@ -117,36 +121,38 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(
             height: 240,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: prodcutProvider.getFreshProductDataList
-                  .map(
-                    (freshProduct) => Card(
-                      child: SingalProduct(
-                        freshProduct.productImage,
-                        freshProduct.productName,
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductOverview(
-                                  freshProduct.productName,
-                                  freshProduct.productImage,
-                                  freshProduct.productPrice,
-                                  freshProduct.productId,
-                                  freshProduct.productQty,
-                                  freshProduct.productUnit),
+            child: prodcutProvider.getFreshProductDataList.isEmpty
+                ? ProductShimmer()
+                : ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: prodcutProvider.getFreshProductDataList
+                        .map(
+                          (freshProduct) => Card(
+                            child: SingalProduct(
+                              freshProduct.productImage,
+                              freshProduct.productName,
+                              () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductOverview(
+                                        freshProduct.productName,
+                                        freshProduct.productImage,
+                                        freshProduct.productPrice,
+                                        freshProduct.productId,
+                                        freshProduct.productQty,
+                                        freshProduct.productUnit),
+                                  ),
+                                );
+                              },
+                              freshProduct.productPrice,
+                              freshProduct.productId,
+                              freshProduct,
                             ),
-                          );
-                        },
-                        freshProduct.productPrice,
-                        freshProduct.productId,
-                        freshProduct,
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
           ),
         ],
       );
@@ -177,36 +183,38 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(
             height: 240,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: prodcutProvider.getRootProductDataList
-                  .map(
-                    (rootProduct) => Card(
-                      child: SingalProduct(
-                        rootProduct.productImage,
-                        rootProduct.productName,
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductOverview(
-                                  rootProduct.productName,
-                                  rootProduct.productImage,
-                                  rootProduct.productPrice,
-                                  rootProduct.productId,
-                                  rootProduct.productQty,
-                                  rootProduct.productUnit),
+            child: prodcutProvider.getRootProductDataList.isEmpty
+                ? ProductShimmer()
+                : ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: prodcutProvider.getRootProductDataList
+                        .map(
+                          (rootProduct) => Card(
+                            child: SingalProduct(
+                              rootProduct.productImage,
+                              rootProduct.productName,
+                              () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductOverview(
+                                        rootProduct.productName,
+                                        rootProduct.productImage,
+                                        rootProduct.productPrice,
+                                        rootProduct.productId,
+                                        rootProduct.productQty,
+                                        rootProduct.productUnit),
+                                  ),
+                                );
+                              },
+                              rootProduct.productPrice,
+                              rootProduct.productId,
+                              rootProduct,
                             ),
-                          );
-                        },
-                        rootProduct.productPrice,
-                        rootProduct.productId,
-                        rootProduct,
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
           ),
         ],
       );

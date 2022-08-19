@@ -26,14 +26,12 @@ class ProdcutProvider with ChangeNotifier {
         .collection('HerbsProduct')
         .orderBy('productName', descending: false)
         .get();
-    qn.docs.forEach(
-      (element) {
-        // print(element.data());
+    for (var element in qn.docs) {
+      // print(element.data());
 
-        productsModel(element);
-        newHerbProductList.add(productModel);
-      },
-    );
+      productsModel(element);
+      newHerbProductList.add(productModel);
+    }
     herbProductList = newHerbProductList;
     notifyListeners();
   }

@@ -27,12 +27,13 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  alignment: Alignment.center,
-                  width: 300,
-                  child: Image.network(
-                    'https://firebasestorage.googleapis.com/v0/b/fresh-vegetable-1918b.appspot.com/o/home_bg.png?alt=media&token=51f9e97d-eff2-4c7f-9c16-9800cc0c37f9',
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    width: 300,
+                    child: Image.asset('assets/home_bg.png')
+                    // Image.network(
+                    //   'https://firebasestorage.googleapis.com/v0/b/fresh-vegetable-1918b.appspot.com/o/home_bg.png?alt=media&token=51f9e97d-eff2-4c7f-9c16-9800cc0c37f9',
+                    // ),
+                    ),
                 SizedBox(
                   height: 18,
                 ),
