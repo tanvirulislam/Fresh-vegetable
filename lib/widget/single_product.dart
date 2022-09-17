@@ -30,7 +30,9 @@ class SingalProduct extends StatefulWidget {
 }
 
 class _SingalProductState extends State<SingalProduct> {
+  // ignore: prefer_typing_uninitialized_variables
   var unitData;
+  // ignore: prefer_typing_uninitialized_variables
   var firstUnitValue;
   @override
   Widget build(BuildContext context) {

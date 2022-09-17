@@ -57,7 +57,7 @@ class _CountState extends State<Count> {
   Widget build(BuildContext context) {
     // print(widget.productId);
     CartProvider cartProvider = Provider.of<CartProvider>(context);
-   
+
     return Expanded(
       child: Card(
         elevation: 3,
@@ -107,29 +107,27 @@ class _CountState extends State<Count> {
                     ),
                   ],
                 )
-              : Container(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        isTrue = true;
-                      });
-                      cartProvider.addCart(
-                        widget.productId,
-                        widget.cartImage,
-                        widget.cartName,
-                        widget.cartPrice,
-                        count,
-                      );
-                    },
-                    child: Center(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(Icons.shopping_cart_outlined),
-                        Text('Add'),
-                      ],
-                    )),
-                  ),
+              : InkWell(
+                  onTap: () {
+                    setState(() {
+                      isTrue = true;
+                    });
+                    cartProvider.addCart(
+                      widget.productId,
+                      widget.cartImage,
+                      widget.cartName,
+                      widget.cartPrice,
+                      count,
+                    );
+                  },
+                  child: Center(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(Icons.shopping_cart_outlined),
+                      Text('Add'),
+                    ],
+                  )),
                 ),
         ),
       ),

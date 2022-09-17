@@ -16,7 +16,6 @@ class DeliveryDetails extends StatefulWidget {
 }
 
 class _DeliveryDetailsState extends State<DeliveryDetails> {
- 
   @override
   void initState() {
     CheckoutProvider initDeliveryAddress = Provider.of(context, listen: false);
@@ -24,7 +23,7 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
     super.initState();
   }
 
-   var addressModel;
+  var addressModel;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,8 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
           children: [
             ListTile(
               leading: Image.network(
-                  'https://firebasestorage.googleapis.com/v0/b/fresh-vegetable-1918b.appspot.com/o/location.png?alt=media&token=cf38c87b-9c17-49d4-9041-4a1014210646'),
+                'https://firebasestorage.googleapis.com/v0/b/fresh-vegetable-1918b.appspot.com/o/location.png?alt=media&token=cf38c87b-9c17-49d4-9041-4a1014210646',
+              ),
               title: Text('Deliver to'),
             ),
             Divider(),
@@ -94,7 +94,8 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
                   : Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Payment(deliveryAddress: addressModel),
+                        builder: (context) =>
+                            Payment(deliveryAddress: addressModel),
                       ));
             },
             child: deliveryAddress.getDeliveryAddressData.isEmpty

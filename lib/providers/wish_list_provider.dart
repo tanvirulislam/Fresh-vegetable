@@ -10,7 +10,7 @@ class WishListProvider with ChangeNotifier {
     String wishListName,
     String wishListPrice,
     String wishListQty,
-      List<dynamic> wishListUnit,
+    List<dynamic> wishListUnit,
   ) {
     FirebaseFirestore.instance
         .collection('WishList')
@@ -24,13 +24,13 @@ class WishListProvider with ChangeNotifier {
       'wishListPrice': wishListPrice,
       'wishListQty': wishListQty,
       'wishList': true,
-      'wishListUnit':wishListUnit,
+      'wishListUnit': wishListUnit,
     });
   }
 
   // show wishList data------------------
   List<ProductModel> wishList = [];
- Future WishListData() async {
+  Future WishListData() async {
     List<ProductModel> newList = [];
     QuerySnapshot qn = await FirebaseFirestore.instance
         .collection('WishList')
@@ -66,6 +66,6 @@ class WishListProvider with ChangeNotifier {
         .collection('YourWishListItems')
         .doc(productId)
         .delete();
-        notifyListeners();
+    notifyListeners();
   }
 }

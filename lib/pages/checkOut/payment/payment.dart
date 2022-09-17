@@ -30,10 +30,10 @@ class _PaymentState extends State<Payment> {
     CartProvider cartProvidersss = Provider.of(context);
     double discount = 10;
     double subtotalPrice = cartProvidersss.getTotalPrice();
-    double discountPrice=0;
+    double discountPrice = 0;
     if (subtotalPrice > 300) {
       double savings = subtotalPrice * (10 / 100);
-       discountPrice = subtotalPrice - savings;
+      discountPrice = subtotalPrice - savings;
       print('discountPrice------- ${discountPrice}');
     }
     print('discountPrice------- ${discountPrice}');
@@ -48,8 +48,10 @@ class _PaymentState extends State<Payment> {
           elevation: 2,
           child: ListTile(
             title: Text('Total Amount'),
-            subtitle: Text('TK ${discountPrice==0?subtotalPrice+20:discountPrice+20}'),
-            trailing: ElevatedButton(onPressed: () {}, child: Text('Place order')),
+            subtitle: Text(
+                'TK ${discountPrice == 0 ? subtotalPrice + 20 : discountPrice + 20}'),
+            trailing:
+                ElevatedButton(onPressed: () {}, child: Text('Place order')),
           ),
         ),
         body: ListView.builder(

@@ -61,7 +61,7 @@ class CartProvider with ChangeNotifier {
         .collection('YourCartItems')
         .orderBy('cartName', descending: false)
         .get();
-    qn.docs.forEach((element) {
+    for (var element in qn.docs) {
       print(element.data());
       CartModel cartModel = CartModel(
         element.get('cartId'),
@@ -71,7 +71,7 @@ class CartProvider with ChangeNotifier {
         element.get('cartQty'),
       );
       newList.add(cartModel);
-    });
+    }
     cartDataList = newList;
     notifyListeners();
   }
@@ -80,17 +80,16 @@ class CartProvider with ChangeNotifier {
     return cartDataList;
   }
 
-  // total price 
+  // total price
 
-  getTotalPrice(){
-    double total=0;
-    cartDataList.forEach((element) {
+  getTotalPrice() {
+    double total = 0;
+    for (var element in cartDataList) {
       print('cart price ------- ${element.cartPrice}');
       total += element.cartPrice * element.cartQty;
       print('total price ------ ${total}');
-    });
+    }
     return total;
-
   }
 
   deleteCart(cartId) {

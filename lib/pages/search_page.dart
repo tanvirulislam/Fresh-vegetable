@@ -7,7 +7,7 @@ import 'package:fresh_vegetable/pages/single_item.dart';
 
 class Search extends StatefulWidget {
   List<ProductModel> search;
-  Search(this.search);
+  Search(this.search, {Key? key}) : super(key: key);
 
   @override
   State<Search> createState() => _SearchState();
@@ -15,7 +15,6 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   String query = '';
-
   searchItem(String query) {
     List<ProductModel> searchFood = widget.search.where((element) {
       return element.productName.toLowerCase().contains(query);
@@ -25,19 +24,12 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-
     List<ProductModel> searchtems = searchItem(query);
     return SafeArea(
       child: Scaffold(
         // backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: Text('Search product'),
-          // actions: [
-          //   Icon(Icons.menu_rounded),
-          //   SizedBox(
-          //     width: 10,
-          //   ),
-          // ],
         ),
         body: ListView(
           children: [
@@ -46,7 +38,7 @@ class _SearchState extends State<Search> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 height: 60,
                 child: TextFormField(
                   onChanged: (value) {
@@ -55,29 +47,31 @@ class _SearchState extends State<Search> {
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Input search item',
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: primaryColor)),
-                      suffixIcon: Icon(Icons.search),
-                      filled: true),
+                    hintText: 'Input search item',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                    ),
+                    suffixIcon: Icon(Icons.search),
+                    filled: true,
+                  ),
                 ),
               ),
             ),
             Column(
-              children: 
-                  searchtems.map(
+              children: searchtems
+                  .map(
                     (data) => SingleItem(
-                      false,
-                      false,
-                      data.productImage,
-                      data.productName,
-                      data.productPrice,
-                      data.productId,
-                      data.productQty,
-                      (){}
-                    ),
+                        false,
+                        false,
+                        data.productImage,
+                        data.productName,
+                        data.productPrice,
+                        data.productId,
+                        data.productQty,
+                        () {}),
                   )
                   .toList(),
             ),

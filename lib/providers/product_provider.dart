@@ -27,7 +27,7 @@ class ProdcutProvider with ChangeNotifier {
         .orderBy('productName', descending: false)
         .get();
     for (var element in qn.docs) {
-      // print(element.data());
+      print(element.data());
 
       productsModel(element);
       newHerbProductList.add(productModel);
@@ -48,13 +48,11 @@ class ProdcutProvider with ChangeNotifier {
         .collection('FreshProduct')
         .orderBy('productName', descending: false)
         .get();
-    qn.docs.forEach(
-      (element) {
-        // print(element.data());
-        productsModel(element);
-        newFreshProductList.add(productModel);
-      },
-    );
+    for (var element in qn.docs) {
+      // print(element.data());
+      productsModel(element);
+      newFreshProductList.add(productModel);
+    }
     freshProductList = newFreshProductList;
     notifyListeners();
   }

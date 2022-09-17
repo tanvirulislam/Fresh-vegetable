@@ -63,7 +63,7 @@ class _ReviewCartState extends State<ReviewCart> {
   @override
   Widget build(BuildContext context) {
     CartProvider cartProviders = Provider.of<CartProvider>(context);
-    // cartProviders.getCart();
+    cartProviders.getCart();
     Widget _reviewCart() {
       return SizedBox(
         height: MediaQuery.of(context).size.height,
