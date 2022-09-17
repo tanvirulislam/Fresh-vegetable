@@ -62,7 +62,7 @@ class CartProvider with ChangeNotifier {
         .orderBy('cartName', descending: false)
         .get();
     for (var element in qn.docs) {
-      print(element.data());
+      // print(element.data());
       CartModel cartModel = CartModel(
         element.get('cartId'),
         element.get('cartImage'),
@@ -85,9 +85,8 @@ class CartProvider with ChangeNotifier {
   getTotalPrice() {
     double total = 0;
     for (var element in cartDataList) {
-      print('cart price ------- ${element.cartPrice}');
       total += element.cartPrice * element.cartQty;
-      print('total price ------ ${total}');
+      // print('total price ------ ${total}');
     }
     return total;
   }
@@ -100,5 +99,16 @@ class CartProvider with ChangeNotifier {
         .doc(cartId)
         .delete();
     notifyListeners();
+  }
+
+  deleteAllCart() async {
+    var collection = await FirebaseFirestore.instance
+        .collection('ReviewCart')
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection('YourCartItems')
+        .get();
+    for (var doc in collection.docs) {
+      doc.reference.delete();
+    }
   }
 }

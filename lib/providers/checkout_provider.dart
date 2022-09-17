@@ -32,9 +32,9 @@ class CheckoutProvider with ChangeNotifier {
         .collection('AddDeliveryAddress')
         .doc(FirebaseAuth.instance.currentUser!.email)
         .get();
-        
+
     if (qn.exists) {
-      print(qn.data());
+      // print(qn.data());
       DeliveryAddressModel deliveryAddressModel = DeliveryAddressModel(
         firstName: qn.get('FirstName'),
         lastName: qn.get('LastName'),
@@ -48,7 +48,7 @@ class CheckoutProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<DeliveryAddressModel> get getDeliveryAddressData{
+  List<DeliveryAddressModel> get getDeliveryAddressData {
     return deliveryAddressData;
   }
 }

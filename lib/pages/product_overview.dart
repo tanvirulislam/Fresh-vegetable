@@ -177,7 +177,7 @@ class _ProductDetailsState extends State<ProductOverview> {
                       widget.productId,
                       widget.productImage,
                       widget.productName,
-                      widget.productPrice.toString(),
+                      widget.productPrice,
                       widget.productQty,
                       widget.productUnit,
                     );

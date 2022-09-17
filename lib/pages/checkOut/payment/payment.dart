@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fresh_vegetable/model/delivery_address_model.dart';
 import 'package:fresh_vegetable/pages/checkOut/deliveryDetalis/single_delivery_item.dart';
+import 'package:fresh_vegetable/pages/home.dart';
 import 'package:fresh_vegetable/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -25,18 +28,27 @@ class _PaymentState extends State<Payment> {
     // print(cartProvider.cartDataList);
   }
 
+  randomNumber() {
+    var rnd = Random();
+    var next = rnd.nextDouble() * 1000000;
+    while (next < 100000) {
+      next *= 10;
+    }
+    return next;
+  }
+
   @override
   Widget build(BuildContext context) {
     CartProvider cartProvidersss = Provider.of(context);
-    double discount = 10;
+    // double discount = 10;
     double subtotalPrice = cartProvidersss.getTotalPrice();
     double discountPrice = 0;
     if (subtotalPrice > 300) {
       double savings = subtotalPrice * (10 / 100);
       discountPrice = subtotalPrice - savings;
-      print('discountPrice------- ${discountPrice}');
+      // print('discountPrice------- ${discountPrice}');
     }
-    print('discountPrice------- ${discountPrice}');
+    // print('discountPrice------- ${discountPrice}');
 
     return SafeArea(
       child: Scaffold(
@@ -50,8 +62,33 @@ class _PaymentState extends State<Payment> {
             title: Text('Total Amount'),
             subtitle: Text(
                 'TK ${discountPrice == 0 ? subtotalPrice + 20 : discountPrice + 20}'),
-            trailing:
-                ElevatedButton(onPressed: () {}, child: Text('Place order')),
+            trailing: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ),
+                    (Route<dynamic> route) => false,
+                  );
+                  cartProvidersss.deleteAllCart();
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text(
+                          'You have successfully ordered your item.'),
+                      content: Text(
+                          'Your order id : ${randomNumber().toInt().toString()}'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'OK'),
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text('Place order')),
           ),
         ),
         body: ListView.builder(

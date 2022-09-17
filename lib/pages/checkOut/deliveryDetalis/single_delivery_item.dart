@@ -5,7 +5,7 @@ import 'package:fresh_vegetable/const/app_colors.dart';
 
 class SingleDeliveryItem extends StatelessWidget {
   var title;
-   String address;
+  String address;
   final String number;
   final String addressType;
   SingleDeliveryItem({
@@ -59,9 +59,7 @@ class SingleDeliveryItem extends StatelessWidget {
             ],
           ),
         ),
-        Divider(
-          height: 35,
-        ),
+        SizedBox(height: 10)
       ],
     );
   }
