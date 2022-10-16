@@ -222,7 +222,6 @@ class _HomeState extends State<Home> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: Text('Home'),
           actions: [

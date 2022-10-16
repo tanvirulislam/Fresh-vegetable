@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                   height: 18,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: InkWell(
                     onTap: () async {
                       await _authClass.handleSignIn(context);
@@ -55,32 +55,18 @@ class _SignInState extends State<SignIn> {
                           side: BorderSide(color: Colors.lightGreen),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        color: Colors.white,
+                        color: Colors.transparent,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Image.asset('assets/google.png'),
                             Text(
                               'Continue with google',
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.lightGreen),
+                              style: TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Sign in to continue',
-                    style: TextStyle(
-                      fontSize: 26,
-                      color: primaryColor,
                     ),
                   ),
                 ),

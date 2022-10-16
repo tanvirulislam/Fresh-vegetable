@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_vegetable/auth/google_service.dart';
 import 'package:fresh_vegetable/const/app_colors.dart';
-import 'package:fresh_vegetable/main.dart';
 import 'package:fresh_vegetable/pages/home.dart';
 import 'package:fresh_vegetable/pages/my_profile.dart';
 import 'package:fresh_vegetable/pages/review_cart.dart';
@@ -12,10 +11,10 @@ import 'package:fresh_vegetable/pages/wish_list.dart';
 
 Widget drawerCustom(context) {
   AuthClass authClass = AuthClass();
-  var token = authClass.getToken();
+  // var token = authClass.getToken();
   return Container(
     width: MediaQuery.of(context).size.width / 1.3,
-    color: Colors.grey[200],
+    color: Theme.of(context).scaffoldBackgroundColor,
     child: ListView(
       children: [
         DrawerHeader(
@@ -53,7 +52,9 @@ Widget drawerCustom(context) {
         InkWell(
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Home())),
-            child: ListTile(leading: Icon(Icons.home, color: primaryColor), title: Text('Home'))),
+            child: ListTile(
+                leading: Icon(Icons.home, color: primaryColor),
+                title: Text('Home'))),
         InkWell(
             onTap: () => Navigator.push(
                   context,
@@ -62,14 +63,16 @@ Widget drawerCustom(context) {
                   ),
                 ),
             child: ListTile(
-                leading: Icon(Icons.shopping_cart, color: primaryColor), title: Text('Cart'))),
+                leading: Icon(Icons.shopping_cart, color: primaryColor),
+                title: Text('Cart'))),
         InkWell(
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MyProfile()));
             },
-            child:
-                ListTile(leading: Icon(Icons.person, color: primaryColor), title: Text('Profile'))),
+            child: ListTile(
+                leading: Icon(Icons.person, color: primaryColor),
+                title: Text('Profile'))),
         InkWell(
           onTap: () {
             Navigator.push(
@@ -83,7 +86,9 @@ Widget drawerCustom(context) {
             title: Text('WishList'),
           ),
         ),
-        ListTile(leading: Icon(Icons.star_outlined, color: primaryColor), title: Text('Rating')),
+        ListTile(
+            leading: Icon(Icons.star_outlined, color: primaryColor),
+            title: Text('Rating')),
         SizedBox(
           height: 12,
         ),

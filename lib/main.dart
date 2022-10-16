@@ -8,6 +8,7 @@ import 'package:fresh_vegetable/pages/signIn.dart';
 import 'package:fresh_vegetable/providers/cart_provider.dart';
 import 'package:fresh_vegetable/providers/checkout_provider.dart';
 import 'package:fresh_vegetable/providers/product_provider.dart';
+import 'package:fresh_vegetable/providers/theme_provider.dart';
 import 'package:fresh_vegetable/providers/user_provider.dart';
 import 'package:fresh_vegetable/providers/wish_list_provider.dart';
 import 'package:provider/provider.dart';
@@ -64,12 +65,10 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.lightGreen,
-        ),
+        themeMode: ThemeMode.system,
+        theme: Mythemes.lightTheme,
+        darkTheme: Mythemes.darkTheme,
         home: currentPage,
-        // home: Home(),
-        // home: ReviewCart(),
         debugShowCheckedModeBanner: false,
       ),
     );
