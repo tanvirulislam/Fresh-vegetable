@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthClass {
   final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -19,6 +18,8 @@ class AuthClass {
     try {
       GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
       if (googleSignInAccount != null) {
+        print('handleSignIn----------------');
+
         GoogleSignInAuthentication googleSignInAuthentication =
             await googleSignInAccount.authentication;
         AuthCredential credential = GoogleAuthProvider.credential(

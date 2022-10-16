@@ -4,8 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fresh_vegetable/auth/google_service.dart';
 import 'package:fresh_vegetable/pages/home.dart';
-import 'package:fresh_vegetable/pages/product_overview.dart';
-import 'package:fresh_vegetable/pages/review_cart.dart';
 import 'package:fresh_vegetable/pages/signIn.dart';
 import 'package:fresh_vegetable/providers/cart_provider.dart';
 import 'package:fresh_vegetable/providers/checkout_provider.dart';
@@ -40,7 +38,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkLogin();
   }
