@@ -285,6 +285,8 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          // iconTheme: IconThemeData(color: Colors.white),
+          elevation: 1,
           title: Text('Home'),
           actions: [
             IconButton(
@@ -323,9 +325,7 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(7),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                      'https://firebasestorage.googleapis.com/v0/b/fresh-vegetable-1918b.appspot.com/o/banner.jpg?alt=media&token=f4e04671-c51a-4708-ab21-2c80b7e0facc',
-                    ),
+                    image: AssetImage('assets/banner.jpg'),
                   ),
                 ),
                 child: Column(
