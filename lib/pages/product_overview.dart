@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fresh_vegetable/const/app_colors.dart';
@@ -117,12 +118,20 @@ class _ProductDetailsState extends State<ProductOverview> {
                 height: 12,
               ),
               Center(
-                child: Image.network(
-                  widget.productImage,
+                child: FancyShimmerImage(
                   height: screenheight > 450 ? 300 : 150,
                   width: screenWidth < 400 ? double.infinity : 200,
-                  fit: BoxFit.fill,
+                  boxFit: BoxFit.fill,
+                  errorWidget: Center(child: Text('Image not Found')),
+                  imageUrl: widget.productImage,
                 ),
+
+                // Image.network(
+                //   widget.productImage,
+                //   height: screenheight > 450 ? 300 : 150,
+                //   width: screenWidth < 400 ? double.infinity : 200,
+                //   fit: BoxFit.fill,
+                // ),
               ),
               SizedBox(
                 height: 15,

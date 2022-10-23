@@ -1,12 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fresh_vegetable/const/app_colors.dart';
 import 'package:fresh_vegetable/model/product_model.dart';
-import 'package:fresh_vegetable/pages/product_overview.dart';
 import 'package:fresh_vegetable/widget/count.dart';
 import 'package:fresh_vegetable/widget/product_unit.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SingalProduct extends StatefulWidget {
   final String productImage;
@@ -16,6 +14,7 @@ class SingalProduct extends StatefulWidget {
   final String productId;
   final ProductModel productUnit;
 
+  // ignore: use_key_in_widget_constructors
   SingalProduct(
     this.productImage,
     this.productName,
@@ -52,11 +51,17 @@ class _SingalProductState extends State<SingalProduct> {
             flex: 2,
             child: GestureDetector(
               onTap: widget.onTap,
-              child: Image.network(
-                widget.productImage,
-                fit: BoxFit.cover,
-                width: double.infinity,
+              child: FancyShimmerImage(
+                boxFit: BoxFit.cover,
+                errorWidget: Center(child: Text('Image not Found')),
+                imageUrl: widget.productImage,
               ),
+
+              // Image.network(
+              //   widget.productImage,
+              //   fit: BoxFit.cover,
+              //   width: double.infinity,
+              // ),
             ),
           ),
           Expanded(
@@ -64,7 +69,6 @@ class _SingalProductState extends State<SingalProduct> {
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   Text(
                     widget.productName,
@@ -76,7 +80,6 @@ class _SingalProductState extends State<SingalProduct> {
                     height: 7,
                   ),
                   Row(
-                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       Expanded(
                         child: ProductUnit(

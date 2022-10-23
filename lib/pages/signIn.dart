@@ -26,6 +26,20 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(
+                  'Fresh Vegetable',
+                  style: TextStyle(
+                    color: Colors.lightGreen,
+                    fontSize: 34,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black.withOpacity(.4),
+                        blurRadius: 4,
+                        offset: Offset(3, 2),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                     alignment: Alignment.center,
                     width: 300,

@@ -6,6 +6,7 @@ import 'package:fresh_vegetable/pages/checkOut/add_delivery_address/add_delivery
 import 'package:fresh_vegetable/pages/checkOut/deliveryDetalis/single_delivery_item.dart';
 import 'package:fresh_vegetable/pages/checkOut/payment/payment.dart';
 import 'package:fresh_vegetable/providers/checkout_provider.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class DeliveryDetails extends StatefulWidget {
@@ -88,15 +89,18 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
               deliveryAddress.getDeliveryAddressData.isEmpty
                   ? Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => AddDeliveryAddress(),
-                      ))
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        child: AddDeliveryAddress(),
+                      ),
+                    )
                   : Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            Payment(deliveryAddress: addressModel),
-                      ));
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        child: Payment(deliveryAddress: addressModel),
+                      ),
+                    );
             },
             child: deliveryAddress.getDeliveryAddressData.isEmpty
                 ? Text('Add new address')

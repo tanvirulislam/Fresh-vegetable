@@ -26,7 +26,7 @@ class MyProfile extends StatelessWidget {
         appBar: AppBar(
           title: Text('My Profile'),
         ),
-        drawer: drawerCustom(context),
+        // drawer: drawerCustom(context),
         body: Column(
           children: [
             Container(

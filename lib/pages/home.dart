@@ -9,6 +9,7 @@ import 'package:fresh_vegetable/providers/product_provider.dart';
 import 'package:fresh_vegetable/widget/drawer.dart';
 import 'package:fresh_vegetable/widget/product_shimmer.dart';
 import 'package:fresh_vegetable/widget/single_product.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -46,11 +47,18 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              Search(prodcutProvider.getHerbProductDataList),
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: Search(prodcutProvider.getHerbProductDataList),
                         ),
                       );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         Search(prodcutProvider.getHerbProductDataList),
+                      //   ),
+                      // );
                     },
                     child: Text('View all'))
               ],
@@ -72,8 +80,9 @@ class _HomeState extends State<Home> {
                               () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProductOverview(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ProductOverview(
                                         herbProductData.productName,
                                         herbProductData.productImage,
                                         herbProductData.productPrice,
@@ -82,6 +91,18 @@ class _HomeState extends State<Home> {
                                         herbProductData.productUnit),
                                   ),
                                 );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => ProductOverview(
+                                //         herbProductData.productName,
+                                //         herbProductData.productImage,
+                                //         herbProductData.productPrice,
+                                //         herbProductData.productId,
+                                //         herbProductData.productQty,
+                                //         herbProductData.productUnit),
+                                //   ),
+                                // );
                               },
                               herbProductData.productPrice,
                               herbProductData.productId,
@@ -109,11 +130,19 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) =>
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child:
                               Search(prodcutProvider.getFreshProductDataList),
                         ),
                       );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         Search(prodcutProvider.getFreshProductDataList),
+                      //   ),
+                      // );
                     },
                     child: Text('View all'))
               ],
@@ -134,8 +163,9 @@ class _HomeState extends State<Home> {
                               () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProductOverview(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ProductOverview(
                                         freshProduct.productName,
                                         freshProduct.productImage,
                                         freshProduct.productPrice,
@@ -144,6 +174,18 @@ class _HomeState extends State<Home> {
                                         freshProduct.productUnit),
                                   ),
                                 );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => ProductOverview(
+                                //         freshProduct.productName,
+                                //         freshProduct.productImage,
+                                //         freshProduct.productPrice,
+                                //         freshProduct.productId,
+                                //         freshProduct.productQty,
+                                //         freshProduct.productUnit),
+                                //   ),
+                                // );
                               },
                               freshProduct.productPrice,
                               freshProduct.productId,
@@ -171,11 +213,18 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              Search(prodcutProvider.getRootProductDataList),
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: Search(prodcutProvider.getRootProductDataList),
                         ),
                       );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         Search(prodcutProvider.getRootProductDataList),
+                      //   ),
+                      // );
                     },
                     child: Text('View all'))
               ],
@@ -196,8 +245,9 @@ class _HomeState extends State<Home> {
                               () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProductOverview(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ProductOverview(
                                         rootProduct.productName,
                                         rootProduct.productImage,
                                         rootProduct.productPrice,
@@ -206,6 +256,18 @@ class _HomeState extends State<Home> {
                                         rootProduct.productUnit),
                                   ),
                                 );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => ProductOverview(
+                                //         rootProduct.productName,
+                                //         rootProduct.productImage,
+                                //         rootProduct.productPrice,
+                                //         rootProduct.productId,
+                                //         rootProduct.productQty,
+                                //         rootProduct.productUnit),
+                                //   ),
+                                // );
                               },
                               rootProduct.productPrice,
                               rootProduct.productId,
@@ -229,9 +291,9 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          Search(prodcutProvider.getRootProductSearchList),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Search(prodcutProvider.getRootProductSearchList),
                     ),
                   );
                 },
@@ -239,10 +301,12 @@ class _HomeState extends State<Home> {
             IconButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReviewCart(),
-                    ));
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: ReviewCart(),
+                  ),
+                );
               },
               icon: Icon(Icons.shopping_cart_outlined),
             ),

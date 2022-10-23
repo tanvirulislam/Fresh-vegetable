@@ -5,6 +5,7 @@ import 'package:fresh_vegetable/model/cart_model.dart';
 import 'package:fresh_vegetable/pages/checkOut/deliveryDetalis/deliveryDetails.dart';
 import 'package:fresh_vegetable/pages/single_item.dart';
 import 'package:fresh_vegetable/providers/cart_provider.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class ReviewCart extends StatefulWidget {
@@ -128,8 +129,9 @@ class _ReviewCartState extends State<ReviewCart> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => DeliveryDetails(),
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: DeliveryDetails(),
                         ),
                       );
                     },

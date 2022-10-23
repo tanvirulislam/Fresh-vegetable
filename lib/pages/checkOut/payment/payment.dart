@@ -7,6 +7,7 @@ import 'package:fresh_vegetable/model/delivery_address_model.dart';
 import 'package:fresh_vegetable/pages/checkOut/deliveryDetalis/single_delivery_item.dart';
 import 'package:fresh_vegetable/pages/home.dart';
 import 'package:fresh_vegetable/providers/cart_provider.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class Payment extends StatefulWidget {
@@ -66,8 +67,9 @@ class _PaymentState extends State<Payment> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Home(),
                     ),
                     (Route<dynamic> route) => false,
                   );
