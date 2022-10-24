@@ -198,7 +198,9 @@ class _SingleItemState extends State<SingleItem> {
                                 widget.productImage,
                               ),
                               ElevatedButton.icon(
-                                onPressed: widget.onDelete,
+                                onPressed:
+                                    // wishListProvider.wishListData();
+                                    widget.onDelete,
                                 icon: Icon(Icons.delete_outline),
                                 label: Text('Delete'),
                                 style: ElevatedButton.styleFrom(

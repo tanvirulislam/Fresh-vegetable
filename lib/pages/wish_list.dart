@@ -31,26 +31,31 @@ class _WishListState extends State<WishList> {
         appBar: AppBar(
           title: Text('Wishlist'),
         ),
-        body: ListView.builder(
-          itemCount: wishListProvider.getWishWishListData.length,
-          itemBuilder: (context, index) {
-            ProductModel data = wishListProvider.getWishWishListData[index];
-            return SingleItem(
-              true,
-              false,
-              data.productImage,
-              data.productName,
-              data.productPrice,
-              data.productId,
-              data.productQty,
-              () {
-                setState(() {
-                  wishListProvider.deleteWishList(data.productId);
-                });
-              },
-            );
-          },
-        ),
+        body: wishListProvider.getWishWishListData.isEmpty
+            ? Center(
+                child: Text('No Item'),
+              )
+            : ListView.builder(
+                itemCount: wishListProvider.getWishWishListData.length,
+                itemBuilder: (context, index) {
+                  ProductModel data =
+                      wishListProvider.getWishWishListData[index];
+                  return SingleItem(
+                    true,
+                    false,
+                    data.productImage,
+                    data.productName,
+                    data.productPrice,
+                    data.productId,
+                    data.productQty,
+                    () {
+                      setState(() {
+                        wishListProvider.deleteWishList(data.productId);
+                      });
+                    },
+                  );
+                },
+              ),
       ),
     );
   }

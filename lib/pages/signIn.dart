@@ -69,7 +69,7 @@ class _SignInState extends State<SignIn> {
                           side: BorderSide(color: Colors.lightGreen),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        color: Colors.transparent,
+                        color: Colors.grey.shade300,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
