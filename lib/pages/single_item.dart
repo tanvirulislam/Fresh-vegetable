@@ -46,15 +46,16 @@ class _SingleItemState extends State<SingleItem> {
     // print(widget.productQty);
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
         child: Card(
-          elevation: 4,
+          color: Colors.grey.shade100,
+          elevation: 2,
           child: Row(
             children: [
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
+                  child: SizedBox(
                     height: 120,
                     child: Center(
                       child: FancyShimmerImage(
@@ -76,7 +77,7 @@ class _SingleItemState extends State<SingleItem> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
+                  child: SizedBox(
                     height: 120,
                     child: Column(
                       mainAxisAlignment: widget.isBool == false
@@ -183,11 +184,12 @@ class _SingleItemState extends State<SingleItem> {
                           widget.productPrice,
                           widget.productImage,
                         )
-                      : SizedBox(
+                      : Container(
+                          // color: Colors.pink,
                           height: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Count(
                                 widget.productId,

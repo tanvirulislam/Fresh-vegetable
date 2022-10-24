@@ -64,7 +64,7 @@ class _ReviewCartState extends State<ReviewCart> {
   @override
   Widget build(BuildContext context) {
     CartProvider cartProviders = Provider.of<CartProvider>(context);
-    cartProviders.getCart();
+
     Widget _reviewCart() {
       return SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -81,6 +81,9 @@ class _ReviewCartState extends State<ReviewCart> {
                   data.cartQty.toString(),
                   () {
                     cartProviders.deleteCart(data.cartId);
+                    setState(() {
+                      cartProviders.getCart();
+                    });
                   },
                 ),
               )
@@ -121,7 +124,8 @@ class _ReviewCartState extends State<ReviewCart> {
         //       ),
         bottomNavigationBar: cartProviders.getCartDataList.isNotEmpty
             ? Card(
-                elevation: 11,
+                color: Colors.grey.shade100,
+                elevation: 2,
                 child: ListTile(
                   title: Text('Total amount: '),
                   subtitle: Text('TK ${cartProviders.getTotalPrice()}'),

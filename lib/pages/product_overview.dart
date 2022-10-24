@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fresh_vegetable/const/app_colors.dart';
 import 'package:fresh_vegetable/providers/wish_list_provider.dart';
 import 'package:fresh_vegetable/widget/count.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import 'review_cart.dart';
@@ -97,6 +98,7 @@ class _ProductDetailsState extends State<ProductOverview> {
     var screenheight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           title: Text('Product details'),
         ),
@@ -110,8 +112,9 @@ class _ProductDetailsState extends State<ProductOverview> {
                   Text(
                     widget.productName,
                     style: TextStyle(fontWeight: FontWeight.bold),
+                    textScaleFactor: 1.3,
                   ),
-                  Text('Tk ${widget.productPrice.toString()}'),
+                  // Text('Tk ${widget.productPrice.toString()}'),
                 ],
               ),
               SizedBox(
@@ -139,16 +142,24 @@ class _ProductDetailsState extends State<ProductOverview> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Total: TK 30'),
+                  Text(
+                    'TK ' + widget.productPrice.toString(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textScaleFactor: 1.1,
+                  ),
                   SizedBox(
                     width:
                         screenWidth < 400 ? screenWidth / 2 : screenWidth / 1.5,
                   ),
-                  Count(
-                    widget.productId,
-                    widget.productName,
-                    widget.productPrice,
-                    widget.productImage,
+                  Expanded(
+                    child: Count(
+                      widget.productId,
+                      widget.productName,
+                      widget.productPrice,
+                      widget.productImage,
+                    ),
                   )
                 ],
               ),
@@ -204,8 +215,9 @@ class _ProductDetailsState extends State<ProductOverview> {
                 () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => ReviewCart(),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: ReviewCart(),
                     ),
                   );
                 },

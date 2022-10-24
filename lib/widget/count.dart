@@ -57,79 +57,77 @@ class _CountState extends State<Count> {
   Widget build(BuildContext context) {
     // print(widget.productId);
     CartProvider cartProvider = Provider.of<CartProvider>(context);
-
-    return Expanded(
-      child: Card(
-        elevation: 3,
-        child: SizedBox(
-          height: 30,
-          child: isTrue == true
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          if (count == 1) {
-                            setState(() {
-                              isTrue = false;
-                            });
-                            cartProvider.deleteCart(widget.productId);
-                          }
-                          if (count > 1) {
-                            setState(() {
-                              count--;
-                            });
-                            cartProvider.updateCart(
-                              widget.productId,
-                              widget.cartImage,
-                              widget.cartName,
-                              widget.cartPrice,
-                              count,
-                            );
-                          }
-                        },
-                        child: Icon(Icons.remove)),
-                    Text('$count'),
-                    InkWell(
+    return Card(
+      // elevation: 2,
+      child: SizedBox(
+        height: 36,
+        width: 98,
+        child: isTrue == true
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
                       onTap: () {
-                        setState(() {
-                          count++;
-                        });
-                        cartProvider.updateCart(
-                          widget.productId,
-                          widget.cartImage,
-                          widget.cartName,
-                          widget.cartPrice,
-                          count,
-                        );
+                        if (count == 1) {
+                          setState(() {
+                            isTrue = false;
+                          });
+                          cartProvider.deleteCart(widget.productId);
+                        }
+                        if (count > 1) {
+                          setState(() {
+                            count--;
+                          });
+                          cartProvider.updateCart(
+                            widget.productId,
+                            widget.cartImage,
+                            widget.cartName,
+                            widget.cartPrice,
+                            count,
+                          );
+                        }
                       },
-                      child: Icon(Icons.add),
-                    ),
+                      child: Icon(Icons.remove)),
+                  Text('$count'),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        count++;
+                      });
+                      cartProvider.updateCart(
+                        widget.productId,
+                        widget.cartImage,
+                        widget.cartName,
+                        widget.cartPrice,
+                        count,
+                      );
+                    },
+                    child: Icon(Icons.add),
+                  ),
+                ],
+              )
+            : InkWell(
+                onTap: () {
+                  setState(() {
+                    isTrue = true;
+                  });
+                  cartProvider.addCart(
+                    widget.productId,
+                    widget.cartImage,
+                    widget.cartName,
+                    widget.cartPrice,
+                    count,
+                  );
+                },
+                child: Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.shopping_cart_outlined),
+                    Text('Add'),
                   ],
-                )
-              : InkWell(
-                  onTap: () {
-                    setState(() {
-                      isTrue = true;
-                    });
-                    cartProvider.addCart(
-                      widget.productId,
-                      widget.cartImage,
-                      widget.cartName,
-                      widget.cartPrice,
-                      count,
-                    );
-                  },
-                  child: Center(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.shopping_cart_outlined),
-                      Text('Add'),
-                    ],
-                  )),
-                ),
-        ),
+                )),
+              ),
       ),
     );
   }

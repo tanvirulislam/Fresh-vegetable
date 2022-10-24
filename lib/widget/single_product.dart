@@ -42,7 +42,8 @@ class _SingalProductState extends State<SingalProduct> {
       return true;
     });
 
-    return SizedBox(
+    return Container(
+      // color: Colors.red,
       width: 170,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,10 +105,11 @@ class _SingalProductState extends State<SingalProduct> {
                                                   width: double.infinity,
                                                   child: Card(
                                                     child: Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 8,
-                                                          horizontal: 4),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                        vertical: 8,
+                                                        horizontal: 4,
+                                                      ),
                                                       child: Text(data),
                                                     ),
                                                   ),
@@ -121,11 +123,13 @@ class _SingalProductState extends State<SingalProduct> {
                           title: unitData == null ? firstUnitValue : unitData,
                         ),
                       ),
-                      Count(
-                        widget.productId,
-                        widget.productName,
-                        widget.productPrice,
-                        widget.productImage,
+                      Expanded(
+                        child: Count(
+                          widget.productId,
+                          widget.productName,
+                          widget.productPrice,
+                          widget.productImage,
+                        ),
                       )
                     ],
                   )
@@ -133,7 +137,6 @@ class _SingalProductState extends State<SingalProduct> {
               ),
             ),
           ),
-          // SizedBox(height: ,)
         ],
       ),
     );

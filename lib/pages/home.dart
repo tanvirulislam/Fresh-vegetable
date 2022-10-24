@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           SizedBox(
-            height: 240,
+            height: 260,
             child: prodcutProvider.getHerbProductDataList.isEmpty
                 ? ProductShimmer()
                 : ListView(
@@ -74,6 +74,7 @@ class _HomeState extends State<Home> {
                     children: prodcutProvider.getHerbProductDataList
                         .map(
                           (herbProductData) => Card(
+                            // color: Colors.pink,
                             child: SingalProduct(
                               herbProductData.productImage,
                               herbProductData.productName,
@@ -149,7 +150,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           SizedBox(
-            height: 240,
+            height: 260,
             child: prodcutProvider.getFreshProductDataList.isEmpty
                 ? ProductShimmer()
                 : ListView(
@@ -231,7 +232,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           SizedBox(
-            height: 240,
+            height: 260,
             child: prodcutProvider.getRootProductDataList.isEmpty
                 ? ProductShimmer()
                 : ListView(
@@ -284,6 +285,7 @@ class _HomeState extends State<Home> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           // iconTheme: IconThemeData(color: Colors.white),
           elevation: 1,
